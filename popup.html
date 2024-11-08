@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Proofpoint SE Copilot</title>
+  <style>
+    body {
+      width: 10cm;
+      height: 18cm;
+      font-family: Arial, sans-serif;
+    }
+    .ribbon {
+      background-color: #009ada;
+      color: white;
+      padding: 10px;
+      text-align: left;
+      font-weight: bold;
+    }
+    .section-title {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .section-frame {
+      border: 2px solid black;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    select, .full-width-button {
+      width: 100%;
+      margin-top: 10px;
+    }
+    #secondlevelthreats {
+      display: none;
+    }
+    .full-width-button {
+      padding: 10px;
+      background-color: #009ada;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="ribbon">
+    Proofpoint SE Copilot
+  </div>
+  <div class="section-frame">
+    <p class="section-title">Customers List</p>
+    <form>
+      <select id="customers" multiple>
+        <option value="Audi">Audi</option>
+        <option value="BMW">BMW</option>
+        <option value="Honda">Honda</option>
+        <option value="Toyota">Toyota</option>
+      </select>
+    </form>
+  </div>
+  <div class="section-frame">
+    <p class="section-title">Threats</p>
+    <select id="toplevelthreats">
+      <option value="common">Common Ones</option>
+      <option value="threats">Threats</option>
+      <option value="families">Families</option>
+      <option value="actors">Actors</option>
+    </select>
+    <br>
+    <select id="secondlevelthreats">
+      <!-- Populated by JavaScript -->
+    </select>
+    <button class="full-width-button" id="list-threats-button">List Threats</button>
+  </div>
+
+  <script>
+    document.getElementById('toplevelthreats').addEventListener('change', function() {
+      var secondlevel = document.getElementById('secondlevelthreats');
+      secondlevel.style.display = 'none';  // Hide initially
+      secondlevel.innerHTML = ''; // Clear options
+
+      if (this.value === 'threats') {
+        secondlevel.style.display = 'block';
+        secondlevel.innerHTML = `
+          <option value="threat1">threat1</option>
+          <option value="threat2">threat2</option>
+          <option value="threat3">threat3</option>
+        `;
+      } else if (this.value === 'families') {
+        secondlevel.style.display = 'block';
+        secondlevel.innerHTML = `
+          <option value="family1">family1</option>
+          <option value="family2">family2</option>
+          <option value="family3">family3</option>
+        `;
+      } else if (this.value === 'actors') {
+        secondlevel.style.display = 'block';
+        secondlevel.innerHTML = `
+          <option value="actor1">actor1</option>
+          <option value="actor2">actor2</option>
+          <option value="actor3">actor3</option>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>
