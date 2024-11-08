@@ -59,10 +59,13 @@
   <div class="section-frame">
     <p class="section-title">Threats</p>
     <select id="toplevelthreats">
-      <option value="common">Common Ones</option>
-      <option value="threats">Threats</option>
-      <option value="families">Families</option>
-      <option value="actors">Actors</option>
+      <option value="common">Common Threats</option>
+      <option value="actors">Threat Actors</option>
+      <option value="families">Threat Families</option>
+      <option value="malware">Malwares</option>
+      <option value="mitre">Mitre ATT&CK Tactics</option>
+      <option value="techniques">Techniques</option>
+      <option value="themes">Themes</option>
     </select>
     <br>
     <select id="secondlevelthreats">
@@ -77,26 +80,47 @@
       secondlevel.style.display = 'none';  // Hide initially
       secondlevel.innerHTML = ''; // Clear options
 
-      if (this.value === 'threats') {
+      if (this.value === 'actors') {
         secondlevel.style.display = 'block';
         secondlevel.innerHTML = `
-          <option value="threat1">threat1</option>
-          <option value="threat2">threat2</option>
-          <option value="threat3">threat3</option>
+          <option value="actor1">TA111</option>
+          <option value="actor2">TA222</option>
+          <option value="actor3">TA333</option>
         `;
       } else if (this.value === 'families') {
         secondlevel.style.display = 'block';
         secondlevel.innerHTML = `
-          <option value="family1">family1</option>
-          <option value="family2">family2</option>
-          <option value="family3">family3</option>
+          <option value="family1">Backdoor</option>
+          <option value="family2">Downloader</option>
+          <option value="family3">RAT</option>
         `;
-      } else if (this.value === 'actors') {
+      } else if (this.value === 'malware') {
         secondlevel.style.display = 'block';
         secondlevel.innerHTML = `
-          <option value="actor1">actor1</option>
-          <option value="actor2">actor2</option>
-          <option value="actor3">actor3</option>
+          <option value="malware1">AnyDesk</option>
+          <option value="malware2">Emotet</option>
+          <option value="malware3">Maze</option>
+        `;
+      } else if (this.value === 'mitre') {
+        secondlevel.style.display = 'block';
+        secondlevel.innerHTML = `
+          <option value="mitre1">TA0001 Initial Access</option>
+          <option value="mitre2">TA0007 Discovery</option>
+          <option value="mitre3">TA0011 Command and Control</option>
+        `;
+      } else if (this.value === 'techniques') {
+        secondlevel.style.display = 'block';
+        secondlevel.innerHTML = `
+          <option value="tech1">CAPTCHA</option>
+          <option value="tech2">ClickFix</option>
+          <option value="tech3">JavaScript</option>
+        `;
+      } else if (this.value === 'themes') {
+        secondlevel.style.display = 'block';
+        secondlevel.innerHTML = `
+          <option value="theme1">DDoS Extortion</option>
+          <option value="theme2">Gift Carding</option>
+          <option value="theme3">Payroll Redirect</option>
         `;
       }
     });
